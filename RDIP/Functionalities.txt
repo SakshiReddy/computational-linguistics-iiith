@@ -1,0 +1,15 @@
+﻿List of Functionalities 
+
+1. DisplaySelectedWord() - Function to display word selected under Formed Sentence
+
+2. ResetSentence() - Reset to original state when Re-form the sentence button is clicked
+
+3. CheckCorrectness() - Based on rules evaluate whether sentence is correct
+
+4. DisplayResult() - After checking the sentence’s correctness display whether it is right or wrong
+
+5. InitialSelection() - For the first word selected display heading Formed Sentence etc
+
+6. DisplayCorrectAnswer() - When Get Correct Sentence is selected, display the various right answers
+
+
