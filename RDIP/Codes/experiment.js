@@ -88,11 +88,18 @@ var corpus_hin = [
      "वहाँ है एक लाल किताब",
      "है वहाँ एक लाल किताब"],
 
-    "एक बड़ी सी किताब वहाँ है",
-    "एक बड़ी सी किताब है वहाँ",
-    "बड़ी सी एक किताब वहाँ है",
-    "बड़ी सी एक किताब है वहाँ",
-    "वहाँ है एक बड़ी सी किताब",
-    "वहाँ है बड़ी सी एक किताब",
-    "है वहाँ एक बड़ी सी किताब",
-    "है वहाँ बड़ी सी एक किताब"]];
+    ["एक बड़ी सी किताब वहाँ है",
+     "एक बड़ी सी किताब है वहाँ",
+     "बड़ी सी एक किताब वहाँ है",
+     "बड़ी सी एक किताब है वहाँ",
+     "वहाँ है एक बड़ी सी किताब",
+     "वहाँ है बड़ी सी एक किताब",
+     "है वहाँ एक बड़ी सी किताब",
+     "है वहाँ बड़ी सी एक किताब"]];
+
+     function dispInitial(value){
+         console.log("Entered");
+        document.getElementById("initialMsg").innerHTML = "Form a sentence (Declarative or Interrogative or any other type) from the given words";
+        document.getElementById("subMsg").innerHTML = "(select the buttons in proper order)";
+
+     };

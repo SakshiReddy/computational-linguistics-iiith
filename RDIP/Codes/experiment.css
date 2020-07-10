@@ -1,0 +1,19 @@
+#langMenu {
+    text-align: center;
+}
+
+select#lang {
+    height: 5vh;
+    width: 20vw;
+    font-size: larger;
+    text-align: center;
+}
+h2#initialMsg {
+    color: blue;
+    text-align: center;
+}
+
+h4#subMsg {
+    color: darkcyan;
+    text-align: center;
+}

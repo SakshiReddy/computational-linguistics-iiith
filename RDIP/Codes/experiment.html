@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>EXPERIMENT</title>    	
+        <link href="experiment.css" rel="stylesheet"/>
+        <script src="experiment.js"></script>
+    </head>
+
+    <body>
+        <div id="content">
+            <h1>Experiment</h1>
+            <div id="langMenu">
+                <select name="lang" id="lang" onchange="dispInitial(this.value)" onfocus="this.selectedIndex = -1;">
+                <option value="english">English</option>
+                <option value="hindi">Hindi</option>
+                </select>
+            </div>
+            <div id= "content">
+                <h2 id="initialMsg"></h2>
+                <h4 id="subMsg"></h4>
+            </div>
+
+        </div>					
+    </body>
+</html>
