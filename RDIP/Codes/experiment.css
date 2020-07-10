@@ -17,3 +17,15 @@ h4#subMsg {
     color: darkcyan;
     text-align: center;
 }
+
+#wrd-buttons {
+    text-align: center;
+}
+
+button.wrd-btn {
+    text-align: center;
+    font-size: large;
+    width: 5vw;
+    height: 5vh;
+    margin: 3px;
+}

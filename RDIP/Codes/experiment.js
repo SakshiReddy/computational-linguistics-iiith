@@ -98,8 +98,63 @@ var corpus_hin = [
      "है वहाँ बड़ी सी एक किताब"]];
 
      function dispInitial(value){
-         console.log("Entered");
+        console.log("Entered");
         document.getElementById("initialMsg").innerHTML = "Form a sentence (Declarative or Interrogative or any other type) from the given words";
         document.getElementById("subMsg").innerHTML = "(select the buttons in proper order)";
+        randSentence(value);
 
      };
+
+     function randSentence(value){
+
+        var buttons = document.getElementById("wrd-buttons"); //removing buttons when option value is changed
+        while (buttons.hasChildNodes()) {  
+        buttons.removeChild(buttons.firstChild);
+        }
+
+         if (value == "english"){
+            var str = corpus_eng[Math.floor(Math.random() * corpus_eng.length)][0]; //Picking a random sentence from the corpus
+            console.log(str);
+            var words = randWords(str);//Generating random words from the sentence
+        }
+
+        else if (value == "hindi"){
+            var str = corpus_hin[Math.floor(Math.random() * corpus_hin.length)][0];
+            console.log(str);
+            var words = randWords(str);
+        }
+
+        for(var i=0; i<words.length; i++){
+            var btn = document.createElement("BUTTON"); 
+            btn.className = "wrd-btn";
+            btn.innerHTML = words[i];
+            document.getElementById("wrd-buttons").appendChild(btn); 
+        }
+     }
+
+     function randWords(string){
+        var words = string.split(" "); //Converting the sentence to an array of words
+        var arr = shuffle(words);
+        console.log(arr);
+
+        return arr;
+     }
+
+     function shuffle(array) { //Function to shuffle the array to generate words in random order
+        var currentIndex = array.length, temporaryValue, randomIndex;
+      
+        // While there remain elements to shuffle
+        while (0 !== currentIndex) {
+      
+          // Pick a remaining element
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+      
+          // And swap it with the current element
+          temporaryValue = array[currentIndex];
+          array[currentIndex] = array[randomIndex];
+          array[randomIndex] = temporaryValue;
+        }
+      
+        return array;
+      }
