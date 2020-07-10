@@ -8,12 +8,12 @@ select#lang {
     font-size: larger;
     text-align: center;
 }
-h2#initialMsg {
+h2 {
     color: blue;
     text-align: center;
 }
 
-h4#subMsg {
+h4 {
     color: darkcyan;
     text-align: center;
 }
@@ -28,4 +28,19 @@ button.wrd-btn {
     width: 5vw;
     height: 5vh;
     margin: 3px;
+}
+
+#wordsSel {
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+}
+
+button#reformBtn {
+    height: 3vh;
+    margin: 3vh;
+}
+
+#second-portion{
+    text-align: center;
 }

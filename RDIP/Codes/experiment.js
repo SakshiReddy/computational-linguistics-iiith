@@ -98,7 +98,7 @@ var corpus_hin = [
      "है वहाँ बड़ी सी एक किताब"]];
 
      function dispInitial(value){
-        console.log("Entered");
+
         document.getElementById("initialMsg").innerHTML = "Form a sentence (Declarative or Interrogative or any other type) from the given words";
         document.getElementById("subMsg").innerHTML = "(select the buttons in proper order)";
         randSentence(value);
@@ -127,6 +127,9 @@ var corpus_hin = [
         for(var i=0; i<words.length; i++){
             var btn = document.createElement("BUTTON"); 
             btn.className = "wrd-btn";
+            btn.value = words[i];
+            btn.id = words[i];
+            btn.onclick = function() {dispWords(this.value); };
             btn.innerHTML = words[i];
             document.getElementById("wrd-buttons").appendChild(btn); 
         }
@@ -158,3 +161,27 @@ var corpus_hin = [
       
         return array;
       }
+
+     function dispWords(value){ //Used to display sentence being formed as the buttons are clicked
+            var sentence = document.getElementById("wordsSel");
+
+            if (sentence.childNodes.length==0) {
+                document.getElementById("secondMsg").innerHTML = "Formed Sentence:";
+                document.getElementById("subMsg2").innerHTML = "(after selecting words)";
+
+                var btn = document.createElement("BUTTON"); 
+                btn.id = "reformBtn";
+                btn.innerHTML = "Re-form the sentence";
+                document.getElementById("second-portion").appendChild(btn);
+
+                sentence.innerHTML = value;
+                var element = document.getElementById(value);
+                element.parentNode.removeChild(element); 
+            }
+
+            else {
+                sentence.innerHTML += " " + value;
+                var element = document.getElementById(value);
+                element.parentNode.removeChild(element);
+            }
+     }
