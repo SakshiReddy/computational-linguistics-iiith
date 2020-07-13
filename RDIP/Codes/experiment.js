@@ -214,5 +214,35 @@ var corpus_hin = [
         sentence.innerHTML = "";//clears the string
         document.getElementById("second-portion").classList.add("hide");
         document.getElementById("checkBtn").classList.add("hide");
+        document.getElementById("solution").innerHTML = "";
      
+     }
+
+     function checkCorrectness(){
+        var sentence = document.getElementById("wordsSel").innerHTML;
+
+        for(var i = 0; i < corpus_eng.length; i++) {
+
+            for(var j = 0; j < corpus_eng[i].length; j++) {
+
+                if(sentence == corpus_eng[i][j]){
+                    document.getElementById("solution").innerHTML = "Right Answer!";
+                    return true;
+                }
+            }
+        }
+
+        for(var i = 0; i < corpus_hin.length; i++) {
+
+            for(var j = 0; j < corpus_hin[i].length; j++) {
+
+                if(sentence == corpus_hin[i][j]){
+                    document.getElementById("solution").innerHTML = "Right Answer!";
+                    return true;
+                }
+            }
+        }
+        document.getElementById("solution").innerHTML = "Wrong Answer!";
+        document.getElementById("solution").style.color = "red";
+        return false;
      }

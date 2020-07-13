@@ -48,3 +48,9 @@ button#reformBtn, button#checkBtn {
 .hide {
     display: none;
 }
+
+#solution {
+    font-size: xx-large;
+    font-style: bold;
+    color: green;
+}
