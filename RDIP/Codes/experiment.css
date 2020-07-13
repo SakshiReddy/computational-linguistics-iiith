@@ -44,3 +44,7 @@ button#reformBtn {
 #second-portion{
     text-align: center;
 }
+
+.hide {
+    display: none;
+}

@@ -103,6 +103,10 @@ var corpus_hin = [
         document.getElementById("subMsg").innerHTML = "(select the buttons in proper order)";
         randSentence(value);
 
+        if(document.getElementById("wordsSel").childNodes.length!=0){
+            clearDisplay();
+        }
+
      };
 
      function randSentence(value){
@@ -166,22 +170,36 @@ var corpus_hin = [
             var sentence = document.getElementById("wordsSel");
 
             if (sentence.childNodes.length==0) {
-                document.getElementById("secondMsg").innerHTML = "Formed Sentence:";
-                document.getElementById("subMsg2").innerHTML = "(after selecting words)";
 
-                var btn = document.createElement("BUTTON"); 
-                btn.id = "reformBtn";
-                btn.innerHTML = "Re-form the sentence";
-                document.getElementById("second-portion").appendChild(btn);
+                if(document.getElementById("second-portion").classList.contains("hide")){
 
+                    document.getElementById("second-portion").classList.remove("hide");
+                }
+                
                 sentence.innerHTML = value;
                 var element = document.getElementById(value);
-                element.parentNode.removeChild(element); 
+                element.classList.add("hide");  
             }
-
             else {
                 sentence.innerHTML += " " + value;
                 var element = document.getElementById(value);
-                element.parentNode.removeChild(element);
+                element.classList.add("hide");                 
             }
+     }
+
+     function clearDisplay(){
+        var sentence = document.getElementById("wordsSel");
+
+        var children = document.getElementById("wrd-buttons").childElementCount;
+
+        for(var i=0; i<children; i++){ //Loop that gets the buttons back by un-hiding them if hidden
+            if(document.getElementById("wrd-buttons").childNodes[i].classList.contains("hide")){
+
+                document.getElementById("wrd-buttons").childNodes[i].classList.remove("hide");
+            }
+        }
+               
+        sentence.innerHTML = "";//clears the string
+        document.getElementById("second-portion").classList.add("hide");
+     
      }
