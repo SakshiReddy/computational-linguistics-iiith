@@ -132,8 +132,8 @@ var corpus_hin = [
             var btn = document.createElement("BUTTON"); 
             btn.className = "wrd-btn";
             btn.value = words[i];
-            btn.id = words[i];
-            btn.onclick = function() {dispWords(this.value); };
+            btn.id = i;
+            btn.onclick = function() {dispWords(this.id); };
             btn.innerHTML = words[i];
             document.getElementById("wrd-buttons").appendChild(btn); 
         }
@@ -166,10 +166,15 @@ var corpus_hin = [
         return array;
       }
 
-     function dispWords(value){ //Used to display sentence being formed as the buttons are clicked
+     function dispWords(id){ //Used to display sentence being formed as the buttons are clicked
+            var value = document.getElementById(id).value;
             var sentence = document.getElementById("wordsSel");
+            var words = sentence.innerHTML.split(" ");
+            var word_count = words.length;
+            
+            var word_limit = document.getElementById("wrd-buttons").childElementCount;
 
-            if (sentence.childNodes.length==0) {
+            if (sentence.childNodes.length==0) { //Un-hiding the section when the first word is selected
 
                 if(document.getElementById("second-portion").classList.contains("hide")){
 
@@ -177,13 +182,20 @@ var corpus_hin = [
                 }
                 
                 sentence.innerHTML = value;
-                var element = document.getElementById(value);
+                var element = document.getElementById(id);
+                element.classList.add("hide");  
+            }
+            else if(word_count==word_limit-1){ //Generating the check button when last word is selected
+
+                document.getElementById("checkBtn").classList.remove("hide");
+                sentence.innerHTML += " " + value;
+                var element = document.getElementById(id);
                 element.classList.add("hide");  
             }
             else {
                 sentence.innerHTML += " " + value;
-                var element = document.getElementById(value);
-                element.classList.add("hide");                 
+                var element = document.getElementById(id);
+                element.classList.add("hide");          
             }
      }
 
@@ -201,5 +213,6 @@ var corpus_hin = [
                
         sentence.innerHTML = "";//clears the string
         document.getElementById("second-portion").classList.add("hide");
+        document.getElementById("checkBtn").classList.add("hide");
      
      }

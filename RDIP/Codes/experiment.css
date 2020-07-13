@@ -36,7 +36,7 @@ button.wrd-btn {
     text-align: center;
 }
 
-button#reformBtn {
+button#reformBtn, button#checkBtn {
     height: 3vh;
     margin: 3vh;
 }
