@@ -97,6 +97,7 @@ var corpus_hin = [
      "है वहाँ एक बड़ी सी किताब",
      "है वहाँ बड़ी सी एक किताब"]];
 
+
      function dispInitial(value){
 
         document.getElementById("initialMsg").innerHTML = "Form a sentence (Declarative or Interrogative or any other type) from the given words";
@@ -215,11 +216,14 @@ var corpus_hin = [
         document.getElementById("second-portion").classList.add("hide");
         document.getElementById("checkBtn").classList.add("hide");
         document.getElementById("solsBtn").classList.add("hide");
+        document.getElementById("solsBtn").innerHTML = "GET CORRECT SENTENCE";
         document.getElementById("solution").innerHTML = "";
+        document.getElementById("answers").innerHTML = "";
      
      }
 
-     function checkCorrectness(){
+     function checkCorrectness(){//Checks correctness of the sentence by comparing it with the entire corpus
+
         var sentence = document.getElementById("wordsSel").innerHTML;
 
         for(var i = 0; i < corpus_eng.length; i++) {
@@ -248,5 +252,73 @@ var corpus_hin = [
         document.getElementById("solution").innerHTML = "Wrong Answer!!!";
         document.getElementById("solution").style.color = "red";
         document.getElementById("solsBtn").classList.remove("hide");
+        document.getElementById("solsBtn").innerHTML = "GET CORRECT SENTENCE";
+        document.getElementById("answers").innerHTML = "";
         return false;
      }
+
+     function displaySols(){//Function to display all the correct answers
+        var matched_sentence;
+        var language;
+        var sentence = document.getElementById("wordsSel");
+        var btn = document.getElementById("solsBtn");
+        var words = sentence.innerHTML.split(" "); //Arrays of the words of the sentence made
+
+        if (btn.innerHTML =="GET CORRECT SENTENCE"){
+            btn.innerHTML = "Hide the Correct Sentence";
+
+            for(var i = 0; i < corpus_eng.length; i++) {
+                if(arraysEqual(words,corpus_eng[i][0].split(" "))){
+                    language = 1;
+                    matched_sentence = i;
+                    }
+            }
+            for(var i = 0; i < corpus_hin.length; i++) {
+                if(arraysEqual(words,corpus_hin[i][0].split(" "))){
+                    language =2;
+                    matched_sentence = i;
+                }
+            }
+            //Printing solutions based on language and sentence id found above
+            if (language==1){
+                for(var i=0; i<corpus_eng[matched_sentence].length; i++){
+                    document.getElementById("answers").innerHTML += corpus_eng[matched_sentence][i] + "<br>";
+                }
+            }
+            if (language==2){
+                for(var i=0; i<corpus_hin[matched_sentence].length; i++){
+                    document.getElementById("answers").innerHTML += corpus_hin[matched_sentence][i] + "<br>";
+                }
+            }
+
+        }
+
+        else if (btn.innerHTML == "Hide the Correct Sentence"){//Adds the required toggle functionality
+            btn.innerHTML = "GET ANSWERS";
+            document.getElementById("answers").classList.add("hide");
+        }
+
+        else{
+            btn.innerHTML = "Hide the Correct Sentence";
+            document.getElementById("answers").classList.remove("hide");
+        }
+     }
+
+     function arraysEqual(_arr1, _arr2) { //Function to check if two arrays have the same elements
+
+        if (!Array.isArray(_arr1) || ! Array.isArray(_arr2) || _arr1.length !== _arr2.length)
+          return false;
+    
+        var arr1 = _arr1.concat().sort();
+        var arr2 = _arr2.concat().sort();
+    
+        for (var i = 0; i < arr1.length; i++) {
+    
+            if (arr1[i] !== arr2[i])
+                return false;
+    
+        }
+    
+        return true;
+    
+    }

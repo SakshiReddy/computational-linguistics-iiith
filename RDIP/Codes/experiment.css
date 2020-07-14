@@ -63,3 +63,7 @@ button#solsBtn {
     font-size: xx-large;
     font-style: bold;
 }
+
+#answers {
+    font-size: large;
+}
