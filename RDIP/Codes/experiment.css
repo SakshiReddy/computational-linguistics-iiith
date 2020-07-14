@@ -36,9 +36,19 @@ button.wrd-btn {
     text-align: center;
 }
 
-button#reformBtn, button#checkBtn {
+button#reformBtn {
     height: 3vh;
     margin: 3vh;
+}
+
+button#checkBtn {
+    height: 3vh;
+    margin-bottom: 2vh;
+}
+
+button#solsBtn {
+    height: 3vh;
+    margin: 2vh;
 }
 
 #second-portion{
@@ -52,5 +62,4 @@ button#reformBtn, button#checkBtn {
 #solution {
     font-size: xx-large;
     font-style: bold;
-    color: green;
 }
