@@ -1,0 +1,7 @@
+﻿Functionalities :
+
+1. selectCorpus() - Function to return option selected
+2. checkAnwers() - Function to compare the answer with actual solution and display message
+3. displayContinue() - Function to display the rest of the experiment when answer is right
+4. checkRootTypes() - Function to check if number of types with different roots is correct and 				display message
+
