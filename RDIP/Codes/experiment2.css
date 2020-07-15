@@ -1,0 +1,10 @@
+#corpusMenu {
+    text-align: center;
+}
+
+select#corpus {
+    height: 5vh;
+    width: 20vw;
+    font-size: larger;
+    text-align: center;
+}
