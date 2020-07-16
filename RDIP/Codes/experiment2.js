@@ -6,14 +6,6 @@ var corpus = [
 
 var corpValue;
 
-    require(['../Libraries/Snowball.min'], function() {
-
-    var stemmer = new Snowball('English');
-    stemmer.setCurrent('abbreviations');
-    stemmer.stem();
-    console.log(stemmer.getCurrent());
-    });
-
     function dispCorpus(value){
 
         document.getElementById("solution").innerHTML = "";
@@ -92,5 +84,39 @@ var corpValue;
         document.getElementById("solution").innerHTML = "";
         document.getElementById("root-input").classList.remove("hide");
         document.getElementById("secondMsg").innerHTML = "Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types." + "<br><br>" + "#new types:";
+
+    };
+
+    require(['../Libraries/Snowball.min']);
+    
+    function findRoots() {
+
+        var str = corpus[corpValue].toLowerCase();
+        var str1 = str.replace(/[".?,]+/g , '');
+        var str2 = str1.replace(/\s\s+/g, ' ');
+        var words = str2.split(" ");
+        var length = words.length;
+
+        var roots = [];
+
+        var stemmer = new Snowball('English');
+
+        for(var i=0; i<length; i++){ //finding and storing all the roots words in roots array
+            stemmer.setCurrent(words[i]);
+            stemmer.stem();
+            roots[i] = stemmer.getCurrent();
+            }
+
+        var types;
+        
+        if(corpValue == 0){
+            types = countUnique(roots) - 5; //To account for under-stemming of (found(find),ate(eat),grown(grow),had(have),were(be))
+        }
+        else if(corpValue == 1){
+            types = countUnique(roots) - 8; //To account for under-stemming if (him(he),himself(he),heard(hear),had(have),me(I),[was(be)-are(be)],his(he),done(do),a(the)) 
+        }
+        else if(corpValue == 2){
+            types = countUnique(roots) - 7; //To account for under-stemming of (did(do),does(do),himself(he),men(man),ran(run),was(is),they(it))
+        }
 
     };
