@@ -13,6 +13,9 @@ var corpValue;
         document.form.types.value = "";
         document.getElementById("input-tokens").style.backgroundColor = "white";
         document.getElementById("input-types").style.backgroundColor = "white";
+        document.getElementById("submit").classList.remove("hide");
+        document.getElementById("root-input").classList.add("hide");
+        document.getElementById("secondMsg").innerHTML = "";
 
         corpValue = value;
 
@@ -29,6 +32,7 @@ var corpValue;
     function checkAnswer(form){
             var tokens = document.getElementById("input-tokens");
             var types = document.getElementById("input-types");
+            var solution = document.getElementById("solution");
 
             var str = corpus[corpValue].toLowerCase();
             var str1 = str.replace(/[".?,]+/g , '');
@@ -38,29 +42,33 @@ var corpValue;
             var unique = countUnique(words);
 
             if(document.form.tokens.value == length && document.form.types.value == unique){
-                document.getElementById("solution").innerHTML = "RIGHT ANSWER!";
-                document.getElementById("solution").style.color ="green";
+                solution.innerHTML = "RIGHT ANSWER!";
+                solution.style.color ="green";
                 tokens.style.backgroundColor = "green";
                 types.style.backgroundColor = "green";
+                document.getElementById("continue").classList.remove("hide");
             }
             else if(document.form.tokens.value == length && document.form.types.value != unique){
-                document.getElementById("solution").innerHTML = "WRONG ANSWER!";
-                document.getElementById("solution").style.color ="red";
+                solution.innerHTML = "WRONG ANSWER!";
+                solution.style.color ="red";
                 tokens.style.backgroundColor = "green";
                 types.style.backgroundColor = "red";
+                document.getElementById("continue").classList.add("hide");
 
             }
             else if(document.form.tokens.value != length && document.form.types.value == unique){
-                document.getElementById("solution").innerHTML = "WRONG ANSWER!";
-                document.getElementById("solution").style.color ="red";
+                solution.innerHTML = "WRONG ANSWER!";
+                solution.style.color ="red";
                 tokens.style.backgroundColor = "red";
                 types.style.backgroundColor = "green";
+                document.getElementById("continue").classList.add("hide");
             }
             else {
-                document.getElementById("solution").innerHTML = "WRONG ANSWER!";
-                document.getElementById("solution").style.color ="red";
+                solution.innerHTML = "WRONG ANSWER!";
+                solution.style.color ="red";
                 tokens.style.backgroundColor = "red";
                 types.style.backgroundColor = "red";
+                document.getElementById("continue").classList.add("hide");
             }       
     }
 
@@ -68,5 +76,13 @@ var corpValue;
         uniqueWords = new Set(array).size;
 
         return uniqueWords;
-      }
+    };
 
+    function dispRoot(){
+        document.getElementById("submit").classList.add("hide");
+        document.getElementById("continue").classList.add("hide");
+        document.getElementById("solution").innerHTML = "";
+        document.getElementById("root-input").classList.remove("hide");
+        document.getElementById("secondMsg").innerHTML = "Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types." + "<br><br>" + "#new types:";
+
+    };
