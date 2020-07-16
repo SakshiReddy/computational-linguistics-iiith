@@ -8,3 +8,30 @@ select#corpus {
     font-size: larger;
     text-align: center;
 }
+
+#corpus-display {
+    text-align: center;
+    margin-left: 15vw;
+    margin-right: 15vw;
+}
+
+#content {
+    text-align: center;
+    font-size: x-large;
+}
+
+.hide {
+    display: none;
+}
+
+table {
+    text-align: center;
+    margin: auto;
+    width: 25%;
+}
+
+td {
+    border: solid 1px grey;
+    padding: 1.5vh;
+    width: 50%;
+}

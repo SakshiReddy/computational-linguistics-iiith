@@ -13,9 +13,21 @@
             <div id="corpusMenu">
                 <select name="corpus" id="corpus" onchange="dispCorpus(this.value)" onfocus="this.selectedIndex = -1;">
                 <option value="select">Select a Corpus</option>
-                <option value="corp1">Corpus 1</option>
-                <option value="corp2">Corpus 2</option>
-                <option value="corp2">Corpus 3</option>
-                </select>				
+                <option value="0">Corpus 1</option>
+                <option value="1">Corpus 2</option>
+                <option value="2">Corpus 3</option>
+                </select>
+            </div>
+            <div id="content">
+                <p id="corpus-display"></p>
+                <p id="initialMsg"></p>
+                <table id="input" class="hide">
+                    <tr><td>#tokens:</td>
+                    <td id="tokens"><input type="text" name="tokens" id="input-tokens"></td></tr>
+                    <tr><td>#types:</td>
+                    <td id="types"><input type="text" name="types" id="input-types"></td></tr>
+                </table>
+            </div>
+        </div>		
     </body>
 </html>
