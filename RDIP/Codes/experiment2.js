@@ -6,6 +6,14 @@ var corpus = [
 
 var corpValue;
 
+    require(['../Libraries/Snowball.min'], function() {
+
+    var stemmer = new Snowball('English');
+    stemmer.setCurrent('abbreviations');
+    stemmer.stem();
+    console.log(stemmer.getCurrent());
+    });
+
     function dispCorpus(value){
 
         document.getElementById("solution").innerHTML = "";
