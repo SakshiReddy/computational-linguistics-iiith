@@ -9,10 +9,13 @@ var corpValue;
     function dispCorpus(value){
 
         document.getElementById("solution").innerHTML = "";
+        document.getElementById("solution2").innerHTML = "";
+        document.form2.roots.value = "";
         document.form.tokens.value = "";
         document.form.types.value = "";
         document.getElementById("input-tokens").style.backgroundColor = "white";
         document.getElementById("input-types").style.backgroundColor = "white";
+        document.getElementById("input-roots").style.backgroundColor = "white";
         document.getElementById("submit").classList.remove("hide");
         document.getElementById("root-input").classList.add("hide");
         document.getElementById("secondMsg").innerHTML = "";
@@ -117,6 +120,27 @@ var corpValue;
         }
         else if(corpValue == 2){
             types = countUnique(roots) - 7; //To account for under-stemming of (did(do),does(do),himself(he),men(man),ran(run),was(is),they(it))
+        }
+
+        checkAnswer2(types);
+
+    };
+
+    function checkAnswer2(roots){
+
+        var answer = document.form2.roots.value;
+        var solution = document.getElementById("solution2");
+
+        if(answer == roots){
+            solution.innerHTML = "RIGHT ANSWER!";
+            solution.style.color ="green";
+            document.getElementById("input-roots").style.backgroundColor = "green";
+        }
+
+        else{
+            solution.innerHTML = "WRONG ANSWER!";
+            solution.style.color ="red";
+            document.getElementById("input-roots").style.backgroundColor = "red";
         }
 
     };
