@@ -35,3 +35,21 @@ td {
     padding: 1.5vh;
     width: 50%;
 }
+
+#submit {
+    width: 10vw;
+    height: 5vh;
+    font-size: large;
+}
+
+.correct {
+    background-color: green;
+}
+
+.wrong {
+    background-color: red;
+}
+
+#input-tokens, #input-types {
+    font-size: large;
+}

@@ -21,12 +21,16 @@
             <div id="content">
                 <p id="corpus-display"></p>
                 <p id="initialMsg"></p>
-                <table id="input" class="hide">
-                    <tr><td>#tokens:</td>
-                    <td id="tokens"><input type="text" name="tokens" id="input-tokens"></td></tr>
-                    <tr><td>#types:</td>
-                    <td id="types"><input type="text" name="types" id="input-types"></td></tr>
-                </table>
+                <form name="form" id="input-form" class="hide">
+                    <table id="input">
+                        <tr><td>#tokens:</td>
+                        <td id="tokens"><input type="text" name="tokens" id="input-tokens"></td></tr>
+                        <tr><td>#types:</td>
+                        <td id="types"><input type="text" name="types" id="input-types"></td></tr>
+                    </table><br>
+                        <input onclick="checkAnswer()" id="submit" type="button" value="SUBMIT">
+                </form>
+                <h4 id="solution"></h4>
             </div>
         </div>		
     </body>
