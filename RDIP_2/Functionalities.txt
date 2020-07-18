@@ -1,0 +1,8 @@
+﻿Functionalities
+
+1. selectLang() : Displays sentence dropdown based on the language selected
+2. selectSentence() : Displays POS table based on sentence selected along with the submit button
+3. checkAnswer() : checks the answers and displays Get Answer Button
+4. displaySolution() : Displays solutions
+5 hideSolutions() : Hides the solutions
+
