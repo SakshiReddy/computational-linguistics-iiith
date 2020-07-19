@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>EXPERIMENT</title>    	
+        <link href="experiment.css" rel="stylesheet"/>
+        <script src="experiment.js"></script>
+    </head>
+
+    <body>
+        <div id="experiment">
+            <h1>Experiment</h1>
+            <div id="langMenu">
+                <select name="lang" id="lang" onclick="selectLang(this.value)">
+                    <option value="select" selected>Select Language</option>
+                    <option value="english">English</option>
+                    <option value="hindi">Hindi</option>
+                </select><br><br><br>
+            </div>
+            <div id="sentenceMenu">
+                <select name="sentence" id="sentence" class="hide">
+                    <option id="select" value="select" selected>Select a Sentence</option>
+                    <option id="0" value="sen1"></option>
+                    <option id="1" value="sen2"></option>
+                    <option id="2" value="sen3"></option>
+                    <option id="3" value="sen4"></option>
+                    <option id="4" value="sen5"></option>
+                </select>
+            </div>
+        </div>					
+    </body>
+</html>

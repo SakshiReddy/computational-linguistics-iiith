@@ -1,0 +1,22 @@
+#langMenu, #sentenceMenu {
+    text-align: center;
+}
+
+select#lang {
+    height: 5vh;
+    width: 20vw;
+    font-size: larger;
+    text-align: center;
+}
+
+select#sentence {
+
+    height: 5vh;
+    width: 25vw;
+    font-size: larger;
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
