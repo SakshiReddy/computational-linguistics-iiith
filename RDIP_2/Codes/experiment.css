@@ -2,6 +2,11 @@
     text-align: center;
 }
 
+select {
+    font-size: large;
+    text-align: center;
+}
+
 select#lang {
     height: 5vh;
     width: 20vw;
@@ -19,4 +24,34 @@ select#sentence {
 
 .hide {
     display: none;
+}
+
+h2 {
+    color: blue;
+    text-align: center;
+}
+
+form {
+    text-align: center;
+}
+
+table {
+    text-align: center;
+    margin: auto;
+    font-size: large;
+}
+
+td, th {
+    border: solid 1px black;
+    padding: 1.5vh;
+}
+
+th {
+    color: red;
+}
+
+#submit {
+    width: 10vw;
+    height: 5vh;
+    font-size: large;
 }
