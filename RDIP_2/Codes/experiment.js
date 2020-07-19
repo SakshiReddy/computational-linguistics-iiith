@@ -51,7 +51,12 @@ function selectSentence(value){
     
     for(var i=0; i<length; i++){
         var word = words[i];
-        var markup = "<tr><td>"+word+"</td><td><select><option>Noun</option><option>Pronoun</option><option>Verb</option><option>Adjective</option><option>Adverb</option><option>Determiner</option><option>Preposition</option><option>Conjunction</option><option>Interjection</option></select></td><td></td><td></td></tr>"
+        if (langIndex == 0){
+            var markup = "<tr><td>"+word+"</td><td><select><option>Noun</option><option>Pronoun</option><option>Verb</option><option>Adjective</option><option>Adverb</option><option>Determiner</option><option>Preposition</option><option>Conjunction</option><option>Interjection</option></select></td><td></td><td></td></tr>"
+        }
+        else if (langIndex ==1){
+            var markup = "<tr><td>"+word+"</td><td><select><option>Noun</option><option>Pronoun</option><option>Verb</option><option>Adjective</option><option>Adverb</option><option>Determiner</option><option>Postposition</option><option>Conjunction</option><option>Interjection</option></select></td><td></td><td></td></tr>"
+        }
         $("table tbody").append(markup);
     }
 };
