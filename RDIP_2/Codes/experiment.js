@@ -48,7 +48,7 @@ function selectLang(value){
 
     if(value!="select"){
 
-        clearDisplay();
+        clearDisplay(); //calling function to clear screen everytime lang is changed
         document.getElementById("select").selected = true;
 
         if(value == "english"){
@@ -76,17 +76,18 @@ function selectSentence(value){
         $("tbody tr").remove();
         document.form.classList.remove("hide");
         document.getElementById("answers").classList.add("hide");
+        document.getElementById("answers").value = "Get Answer";
         senIndex = value;
         var sentence = sentences[langIndex][value];
 
-        //removing the full stop
+        //removing the full stop(eng and hin) and ! from the sentences
         var str = sentence.replace(/[.।!]+/g , '');
         var str1 = str.replace(/\s\s+/g, ' ');
 
         var words = str1.split(" ");
-        console.log(words);
         var length = words.length;
         
+        //Adding rows to the table based on the sentence chosen as HTML elements
         for(var i=0; i<length; i++){
             var word = words[i];
             if (langIndex == 0){
@@ -111,6 +112,7 @@ function clearDisplay(){
     $("tbody tr").remove();
     document.form.classList.add("hide");
     document.getElementById("answers").classList.add("hide");
+    document.getElementById("answers").value = "Get Answer";
     
 };
 
@@ -120,19 +122,19 @@ function submitAnswers(){
     var lexer = new Lexer();
     var tagger = new POSTagger();
 
-    //removing the full stop
+    //removing full stop(eng and hin) and ! from the sentence
     var str1 = str.replace(/[.।!]+/g , '');
     var sentence = str1.replace(/\s\s+/g, ' ');
 
-    var answers = selOption();
-    var solutions = [];
+    var answers = selOption(); //calling function that returns array of user inputted answers
+    var solutions = []; //array to store solutions computed
 
     if (langIndex == 0){
 
         var words = lexer.lex(sentence);
         var tags = tagger.tag(words);
 
-        for (i in tags) {
+        for (i in tags) { //classifying words based on tags from the pos library for English
             
             var id = tags[i][1];
 
@@ -160,18 +162,17 @@ function submitAnswers(){
         }
     }
 
-    else if (langIndex == 1){
+    else if (langIndex == 1){//classifying words based on the Dictionary made above for Hindi
         var words = sentence.split(" ");
         for(var k=0; k<words.length; k++){
             solutions[k] = hindiDict[words[k]];
         }
     }
-    console.log(solutions);
     solArray = solutions;
     var imgBoxes = $(".img-disp");
-    var counter = 0;
+    var counter = 0;//counter to keep track of the number of correct answers
 
-    for(var j=0; j<answers.length; j++){
+    for(var j=0; j<answers.length; j++){//comparing the answers with the solutions computed and displaying result
         if(answers[j].localeCompare(solutions[j]) == 0){
             imgBoxes[j].innerHTML = "<img src='../right.png'>";
             counter++;
@@ -186,7 +187,7 @@ function submitAnswers(){
     }
 };
 
-function selOption(){
+function selOption(){//returns array of user inputted answers chosen from the dropdowns
 
     var option;
     var selValues = [];
@@ -200,7 +201,7 @@ function selOption(){
 return selValues
 };
 
-function getAnswers(btn){
+function getAnswers(btn){//toggles between hide and get answer
 
     var solBoxes = $(".solution");
 
