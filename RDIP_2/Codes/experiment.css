@@ -1,3 +1,7 @@
+body {
+    background-color: #ffe8d9;
+}
+    
 #langMenu, #sentenceMenu {
     text-align: center;
 }
