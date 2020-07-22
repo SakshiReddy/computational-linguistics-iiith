@@ -72,6 +72,7 @@ function selectSentence(value){
 
     $("tbody tr").remove();
     document.form.classList.remove("hide");
+    document.getElementById("answers").classList.add("hide");
     senIndex = value;
     var sentence = sentences[langIndex][value];
 
@@ -101,6 +102,7 @@ function clearDisplay(){
     document.getElementById("select").selected = true;
     $("tbody tr").remove();
     document.form.classList.add("hide");
+    document.getElementById("answers").classList.add("hide");
     
 };
 
@@ -158,14 +160,20 @@ function submitAnswers(){
     }
     console.log(solutions);
     var imgBoxes = $(".img-disp");
+    var counter = 0;
 
     for(var j=0; j<answers.length; j++){
         if(answers[j].localeCompare(solutions[j]) == 0){
             imgBoxes[j].innerHTML = "<img src='../right.png'>";
+            counter++;
         }
         else{
             imgBoxes[j].innerHTML = "<img src='../wrong.png'>"; 
         }
+    }
+
+    if(counter!=answers.length){
+        document.getElementById("answers").classList.remove("hide");
     }
 };
 

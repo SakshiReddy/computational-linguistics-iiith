@@ -50,7 +50,7 @@ th {
     color: red;
 }
 
-#submit {
+#submit, #answers {
     width: 10vw;
     height: 5vh;
     font-size: large;
