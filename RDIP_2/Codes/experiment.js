@@ -12,6 +12,7 @@ var sentences = [["The child liked the chocolate.",
 
 var langIndex; //variable to store id of lang chosen
 var senIndex; //variable to store id of sentence chosen
+var solArray = []; //array to store solutions
 
 var hindiDict = {
     "राम" : "Noun",
@@ -70,29 +71,36 @@ function selectLang(value){
 
 function selectSentence(value){
 
-    $("tbody tr").remove();
-    document.form.classList.remove("hide");
-    document.getElementById("answers").classList.add("hide");
-    senIndex = value;
-    var sentence = sentences[langIndex][value];
+    if(value!="select"){
 
-    //removing the full stop
-    var str = sentence.replace(/[.।!]+/g , '');
-    var str1 = str.replace(/\s\s+/g, ' ');
+        $("tbody tr").remove();
+        document.form.classList.remove("hide");
+        document.getElementById("answers").classList.add("hide");
+        senIndex = value;
+        var sentence = sentences[langIndex][value];
 
-    var words = str1.split(" ");
-    console.log(words);
-    var length = words.length;
-    
-    for(var i=0; i<length; i++){
-        var word = words[i];
-        if (langIndex == 0){
-            var markup = "<tr><td>"+word+"</td><td><select class='posMenu' onchange='selOption()'><option>Noun</option><option>Pronoun</option><option>Verb</option><option>Adjective</option><option>Adverb</option><option>Determiner</option><option>Preposition</option><option>Conjunction</option><option>Interjection</option></select></td><td class='img-disp'></td><td></td></tr>"
+        //removing the full stop
+        var str = sentence.replace(/[.।!]+/g , '');
+        var str1 = str.replace(/\s\s+/g, ' ');
+
+        var words = str1.split(" ");
+        console.log(words);
+        var length = words.length;
+        
+        for(var i=0; i<length; i++){
+            var word = words[i];
+            if (langIndex == 0){
+                var markup = "<tr><td>"+word+"</td><td><select class='posMenu' onchange='selOption()'><option>Noun</option><option>Pronoun</option><option>Verb</option><option>Adjective</option><option>Adverb</option><option>Determiner</option><option>Preposition</option><option>Conjunction</option><option>Interjection</option></select></td><td class='img-disp'></td><td class='solution'></td></tr>"
+            }
+            else if (langIndex ==1){
+                var markup = "<tr><td>"+word+"</td><td><select class='posMenu' onchange='selOption()'><option>Noun</option><option>Pronoun</option><option>Verb</option><option>Adjective</option><option>Adverb</option><option>Determiner</option><option>Postposition</option><option>Conjunction</option><option>Interjection</option></select></td><td class='img-disp'></td><td class='solution'></td></tr>"
+            }
+            $("table tbody").append(markup);
         }
-        else if (langIndex ==1){
-            var markup = "<tr><td>"+word+"</td><td><select class='posMenu' onchange='selOption()'><option>Noun</option><option>Pronoun</option><option>Verb</option><option>Adjective</option><option>Adverb</option><option>Determiner</option><option>Postposition</option><option>Conjunction</option><option>Interjection</option></select></td><td class='img-disp'></td><td></td></tr>"
-        }
-        $("table tbody").append(markup);
+    }
+
+    else {
+        alert("Select a Sentence!")
     }
 };
 
@@ -159,6 +167,7 @@ function submitAnswers(){
         }
     }
     console.log(solutions);
+    solArray = solutions;
     var imgBoxes = $(".img-disp");
     var counter = 0;
 
@@ -190,4 +199,26 @@ function selOption(){
 
 return selValues
 };
- 
+
+function getAnswers(btn){
+
+    var solBoxes = $(".solution");
+
+    if (btn.value == "Get Answer"){
+
+        btn.value = "Hide Answer";
+
+        for(var j=0; j<solArray.length; j++){
+            solBoxes[j].innerHTML = solArray[j];
+        }
+    }
+
+    else if (btn.value == "Hide Answer"){
+
+        btn.value = "Get Answer";
+
+        for(var j=0; j<solArray.length; j++){
+            solBoxes[j].innerHTML = "";
+        }
+    }
+};
